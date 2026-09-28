@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-pipeline-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
-[![CI](https://github.com/<your-username>/spam-detection/actions/workflows/ci.yml/badge.svg)](https://github.com/AlejandroLopezData/sms-spam-classifier/actions/workflows/ci.yml)
+[![CI](https://github.com/AlejandroLopezData/sms-spam-classifier/actions/workflows/ci.yml/badge.svg)](https://github.com/AlejandroLopezData/sms-spam-classifier/actions/workflows/ci.yml)
 
 A machine learning project that classifies SMS messages as **spam** or **ham** (legitimate). It compares
 several classical models under a leakage-free, cross-validated protocol, tunes the decision threshold for
