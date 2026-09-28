@@ -1,0 +1,52 @@
+seed: 42
+
+paths:
+  raw_data: data/raw/SMSSpamCollection
+  model: models/spam_classifier.joblib
+  reports: reports
+  figures: reports/figures
+
+data:
+  test_size: 0.2
+
+# Default TF-IDF settings (some are overridden by the grids below)
+tfidf:
+  max_features: 5000
+  min_df: 2
+  max_df: 0.9
+  ngram_range: [1, 1]
+  stop_words: null
+
+cv:
+  folds: 5
+  scoring: average_precision   # PR-AUC: more informative than ROC-AUC on imbalanced data
+
+# Decision threshold: highest recall subject to precision >= min_precision (chosen on train OOF)
+threshold:
+  min_precision: 0.98
+
+# `manual_features: false` = TF-IDF only (used for the ablation study)
+experiments:
+  - { name: naive_bayes,       model: naive_bayes,       manual_features: false }
+  - { name: logreg_text_only,  model: logreg,            manual_features: false }
+  - { name: logreg,            model: logreg,            manual_features: true }
+  - { name: random_forest,     model: random_forest,     manual_features: true }
+  - { name: gradient_boosting, model: gradient_boosting, manual_features: true }
+
+param_grids:
+  naive_bayes:
+    clf__alpha: [0.05, 0.1, 0.5, 1.0]
+    features__tfidf__ngram_range: [[1, 1], [1, 2]]
+    features__tfidf__stop_words: [null, english]
+  logreg:
+    clf__C: [0.1, 1, 10, 100]
+    features__tfidf__ngram_range: [[1, 1], [1, 2]]
+    features__tfidf__stop_words: [null, english]
+  random_forest:
+    clf__n_estimators: [200, 400]
+    clf__max_depth: [null, 50]
+    clf__min_samples_leaf: [1, 2]
+  gradient_boosting:
+    clf__n_estimators: [100, 200]
+    clf__max_depth: [3, 4]
+    clf__learning_rate: [0.1]

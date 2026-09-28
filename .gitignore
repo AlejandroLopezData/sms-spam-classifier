@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Data (downloaded with `spam-download`)
+data/raw/*
+!data/raw/.gitkeep
+
+# Model artifacts: commit only if the file is small (< ~10 MB)
+# models/*.joblib
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/

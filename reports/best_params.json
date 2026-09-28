@@ -1,0 +1,36 @@
+{
+  "naive_bayes": {
+    "clf__alpha": 0.1,
+    "features__tfidf__ngram_range": [
+      1,
+      1
+    ],
+    "features__tfidf__stop_words": null
+  },
+  "logreg_text_only": {
+    "clf__C": 10,
+    "features__tfidf__ngram_range": [
+      1,
+      2
+    ],
+    "features__tfidf__stop_words": null
+  },
+  "logreg": {
+    "clf__C": 10,
+    "features__tfidf__ngram_range": [
+      1,
+      1
+    ],
+    "features__tfidf__stop_words": null
+  },
+  "random_forest": {
+    "clf__max_depth": 50,
+    "clf__min_samples_leaf": 1,
+    "clf__n_estimators": 400
+  },
+  "gradient_boosting": {
+    "clf__learning_rate": 0.1,
+    "clf__max_depth": 4,
+    "clf__n_estimators": 200
+  }
+}
